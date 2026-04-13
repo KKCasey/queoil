@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8dc;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    color: #1f2d3d;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button,
+button,
+input[type="submit"] {
+    display: inline-block;
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px 5px 5px 0;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+    background-color: #1558b0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.message-success {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.message-error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.nav-links {
+    margin-top: 20px;
+}
+
+.nav-links a {
+    margin-right: 10px;
+}
