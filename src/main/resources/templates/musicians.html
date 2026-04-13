@@ -4,36 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicians - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Musicians</h1>
 
-    <h1>Musicians</h1>
+        <!-- Search Form -->
+        <form method="get" action="/musicians">
+            <label for="search">Search Musicians:</label>
+            <input type="text" id="search" name="search" th:value="${search}">
+            <input type="submit" value="Search">
+        </form>
 
-    <form action="/musicians" method="get">
-        <input type="text" name="search" placeholder="Search musicians..." th:value="${search}">
-        <button type="submit">Search</button>
-    </form>
+        <h3>Available Musicians</h3>
 
-    <br>
+        <ul>
+            <li th:each="user : ${users}">
+                <a th:href="@{'/musicians/' + ${user.id}}">
+                    <span th:text="${user.username}"></span>
+                </a>
+            </li>
+        </ul>
 
-    <ul>
-        <li th:each="user : ${users}">
-            <a th:href="@{/musicians/{id}(id=${user.id})}" th:text="${user.username}"></a>
-
-            <span th:if="${user.liveNow}" style="color: red; font-weight: bold;">
-                - LIVE NOW
-            </span>
-
-            <span th:if="${user.liveNow and user.activeSetlist != null}">
-                (Setlist:
-                <a th:href="@{/setlists/{id}(id=${user.activeSetlist.id})}"
-                th:text="${user.activeSetlist.title}"></a>)
-            </span>
-        </li>
-    </ul>
-
-    <br>
-    <a href="/">Back to Home</a>
-
+        <div class="nav-links">
+            <a class="button" href="/listener-dashboard">Back to Dashboard</a>
+            <a class="button" href="/profile">My Profile</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
 </body>
 </html>

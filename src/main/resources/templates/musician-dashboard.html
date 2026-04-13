@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musician Dashboard - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Musician Dashboard</h1>
+    <div class="container">
+        <h1>Musician Dashboard</h1>
 
-    <p>Welcome, <span th:text="${user.username}"></span>!</p>
-    <p style="color: green;" th:if="${successMessage}" th:text="${successMessage}"></p>
+        <p>Welcome, <span th:text="${user.username}"></span>!</p>
 
-    <p th:if="${user.liveNow}" style="color: red;">
-        LIVE NOW with setlist: <span th:text="${user.activeSetlist != null ? user.activeSetlist.title : 'None'}"></span>
-    </p>
+        <p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
 
-    <ul>
-        <li><a href="/my-setlists">View My Setlists</a></li>
-        <li><a href="/setlists/create-ui">Create Setlist</a></li>
-        <li><a href="/songs/create-ui">Add Song</a></li>
-        <li><a href="/live">Go Live / Show Ended</a></li>
-        <li><a href="/requests">View Song Requests</a></li>
-        <li><a href="/musicians">Browse Musicians</a></li>
-        <li><a href="/profile">My Profile</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
+        <p class="message-error" th:if="${user.liveNow}">
+            LIVE NOW with setlist:
+            <span th:text="${user.activeSetlist != null ? user.activeSetlist.title : 'None'}"></span>
+        </p>
+
+        <div class="nav-links">
+            <a class="button" href="/my-setlists">View My Setlists</a>
+            <a class="button" href="/setlists/create-ui">Create Setlist</a>
+            <a class="button" href="/songs/create-ui">Add Song</a>
+            <a class="button" href="/live">Live Controls</a>
+            <a class="button" href="/requests">Request Queue</a>
+            <a class="button" href="/musicians">Browse Musicians</a>
+            <a class="button" href="/profile">My Profile</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
 </body>
 </html>
