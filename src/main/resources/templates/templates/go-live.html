@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Controls - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Go Live / Show Ended</h1>
+
+        <p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+        <p class="message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+        <form action="/live/start" method="post">
+            <label for="setlistId">Choose Setlist:</label>
+            <select id="setlistId" name="setlistId" required>
+                <option th:each="setlist : ${setlists}"
+                        th:value="${setlist.id}"
+                        th:text="${setlist.title}">
+                </option>
+            </select>
+            <input type="submit" value="Go Live">
+        </form>
+
+        <form action="/live/end" method="post">
+            <button type="submit">Show Ended</button>
+        </form>
+
+        <div class="nav-links">
+            <a class="button" href="/musician-dashboard">Back to Dashboard</a>
+            <a class="button" href="/my-setlists">View My Setlists</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

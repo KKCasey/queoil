@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Setlist - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Setlist</h1>
+
+        <form action="/setlists/create-ui" method="post">
+            <label for="title">Setlist Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <input type="submit" value="Create Setlist">
+        </form>
+
+        <div class="nav-links">
+            <a class="button" href="/musician-dashboard">Back to Dashboard</a>
+            <a class="button" href="/my-setlists">View My Setlists</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

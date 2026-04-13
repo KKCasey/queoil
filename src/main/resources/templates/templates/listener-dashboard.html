@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listener Dashboard - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Listener Dashboard</h1>
+
+        <p>Welcome, <span th:text="${user.username}"></span>!</p>
+
+        <div class="nav-links">
+            <a class="button" href="/musicians">Browse Musicians</a>
+            <a class="button" href="/favourites">My Favourite Musicians</a>
+            <a class="button" href="/profile">My Profile</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

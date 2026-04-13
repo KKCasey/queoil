@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Song - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Song</h1>
+
+        <form action="/songs/create-ui" method="post">
+            <label for="title">Song Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="setlistId">Choose Setlist:</label>
+            <select id="setlistId" name="setlistId" required>
+                <option th:each="setlist : ${setlists}"
+                        th:value="${setlist.id}"
+                        th:text="${setlist.title}">
+                </option>
+            </select>
+
+            <input type="submit" value="Add Song">
+        </form>
+
+        <div class="nav-links">
+            <a class="button" href="/musician-dashboard">Back to Dashboard</a>
+            <a class="button" href="/my-setlists">View My Setlists</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

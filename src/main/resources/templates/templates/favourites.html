@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite Musicians - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Favourite Musicians</h1>
+
+        <ul>
+            <li th:each="musician : ${favourites}">
+                <a th:href="@{/musicians/{id}(id=${musician.id})}" th:text="${musician.username}"></a>
+                <span th:if="${musician.liveNow}" class="message-live"> - LIVE NOW</span>
+            </li>
+        </ul>
+
+        <p th:if="${#lists.isEmpty(favourites)}">You are not following any musicians yet.</p>
+
+        <div class="nav-links">
+            <a class="button" href="/listener-dashboard">Back to Dashboard</a>
+            <a class="button" href="/musicians">Browse Musicians</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

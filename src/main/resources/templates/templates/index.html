@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Queoil</h1>
+
+        <p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+        <p>Connecting Musicians and Listeners through song requests.</p>
+
+        <div class="nav-links">
+            <a class="button" href="/register">Register</a>
+            <a class="button" href="/login">Login</a>
+            <a class="button" href="/musicians">Browse Musicians</a>
+        </div>
+    </div>
+</body>
+</html>

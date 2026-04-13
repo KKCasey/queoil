@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Setlists - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Setlists</h1>
+
+        <ul>
+            <li th:each="setlist : ${setlists}">
+                <a th:href="@{/setlists/{id}(id=${setlist.id})}" th:text="${setlist.title}"></a>
+            </li>
+        </ul>
+
+        <p th:if="${#lists.isEmpty(setlists)}">You have not created any setlists yet.</p>
+
+        <div class="nav-links">
+            <a class="button" href="/musician-dashboard">Back to Dashboard</a>
+            <a class="button" href="/setlists/create-ui">Create Setlist</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

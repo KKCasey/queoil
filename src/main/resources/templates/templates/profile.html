@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Profile</h1>
+
+        <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        <p><strong>Role:</strong> <span th:text="${user.role}"></span></p>
+
+        <p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+        <p class="message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+        <h3>Update Password</h3>
+        <form action="/profile/update-password" method="post">
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Update Password">
+        </form>
+
+        <h3>Delete Account</h3>
+        <form action="/profile/delete" method="post">
+            <button type="submit">Delete Account</button>
+        </form>
+
+        <div class="nav-links">
+            <a class="button" th:if="${user.role == 'LISTENER'}" href="/listener-dashboard">Back to Dashboard</a>
+            <a class="button" th:if="${user.role == 'MUSICIAN'}" href="/musician-dashboard">Back to Dashboard</a>
+            <a class="button" href="/logout">Logout</a>
+            <a class="button" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

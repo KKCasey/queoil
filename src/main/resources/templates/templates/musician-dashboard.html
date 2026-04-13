@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musician Dashboard - Queoil</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Musician Dashboard</h1>
+
+        <p>Welcome, <span th:text="${user.username}"></span>!</p>
+
+        <p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+        <p class="message-error" th:if="${user.liveNow}">
+            LIVE NOW with setlist:
+            <span th:text="${user.activeSetlist != null ? user.activeSetlist.title : 'None'}"></span>
+        </p>
+
+        <div class="nav-links">
+            <a class="button" href="/my-setlists">View My Setlists</a>
+            <a class="button" href="/setlists/create-ui">Create Setlist</a>
+            <a class="button" href="/songs/create-ui">Add Song</a>
+            <a class="button" href="/live">Live Controls</a>
+            <a class="button" href="/requests">Request Queue</a>
+            <a class="button" href="/musicians">Browse Musicians</a>
+            <a class="button" href="/profile">My Profile</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
