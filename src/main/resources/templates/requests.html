@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Requests - Queoil</title>
+</head>
+<body>
+
+    <h1>Song Requests Queue</h1>
+
+    <ul>
+        <li th:each="request : ${requests}">
+            <span th:text="${request.song.title}"></span>
+            requested by
+            <span th:text="${request.listener.username}"></span>
+
+            <form th:action="@{/requests/{id}/played(id=${request.id})}" method="post" style="display:inline;">
+                <button type="submit">Played</button>
+            </form>
+
+            <form th:action="@{/requests/{id}/deny(id=${request.id})}" method="post" style="display:inline;">
+                <button type="submit">Deny</button>
+            </form>
+        </li>
+    </ul>
+
+    <p th:if="${#lists.isEmpty(requests)}">No pending requests.</p>
+
+    <br>
+    <a href="/musician-dashboard">Back to Dashboard</a>
+</body>
+</html>

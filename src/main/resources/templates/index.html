@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queoil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #222;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #1f4d7a;
+        }
+        a {
+            display: inline-block;
+            margin-right: 15px;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #1f4d7a;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+        a:hover {
+            background: #163854;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Queoil</h1>
+        <p style="color: green;" th:if="${successMessage}" th:text="${successMessage}"></p>
+        <p>Connecting Musicians and Listeners through song requests.</p>
+
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+        <a href="/musicians">Browse Musicians</a>
+    </div>
+</body>
+</html>

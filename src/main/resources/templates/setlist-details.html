@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setlist Details - Queoil</title>
+</head>
+<body>
+
+    <h1 th:text="${setlist.title}"></h1>
+
+    <h2>Songs</h2>
+
+    <ul>
+        <li th:each="song : ${songs}">
+            <span th:text="${song.title}"></span>
+
+            <form th:if="${loggedInUser != null and loggedInUser.role == 'LISTENER' and requestAllowed}"
+                th:action="@{/requests/create}" method="post" style="display:inline;">
+                <input type="hidden" name="songId" th:value="${song.id}">
+                <button type="submit">Request Song</button>
+            </form>
+        </li>
+    </ul>
+
+    <br>
+    <a th:href="@{/musicians/{id}(id=${setlist.user.id})}">Back to Musician</a>
+    <br><br>
+    <a href="/">Back to Home</a>
+
+    <br>
+    <a href="/listener-dashboard" th:if="${loggedInUser != null and loggedInUser.role == 'LISTENER'}">Back to Dashboard</a>
+    <a href="/musician-dashboard" th:if="${loggedInUser != null and loggedInUser.role == 'MUSICIAN'}">Back to Dashboard</a>
+    <br><br>
+    <a th:href="@{/musicians/{id}(id=${setlist.user.id})}">Back to Musician</a>
+    <br><br>
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

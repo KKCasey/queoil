@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musician Details - Queoil</title>
+</head>
+<body>
+
+    <h1 th:text="${musician.username} + ' - Setlists'"></h1>
+
+    <p th:if="${musician.liveNow}" style="color: red; font-weight: bold;">
+        LIVE NOW
+    </p>
+
+    <p th:if="${musician.liveNow and musician.activeSetlist != null}">
+        Current live setlist:
+        <a th:href="@{/setlists/{id}(id=${musician.activeSetlist.id})}"
+        th:text="${musician.activeSetlist.title}"></a>
+    </p>
+
+    <div th:if="${loggedInUser != null and loggedInUser.role == 'LISTENER'}">
+        <form th:if="${!isFollowing}" th:action="@{'/musicians/' + ${musician.id} + '/follow'}" method="post">
+            <button type="submit">Follow</button>
+        </form>
+
+        <form th:if="${isFollowing}" th:action="@{'/musicians/' + ${musician.id} + '/unfollow'}" method="post">
+            <button type="submit">Unfollow</button>
+        </form>
+    </div>
+
+    <ul>
+        <li th:each="setlist : ${setlists}">
+            <a th:href="@{/setlists/{id}(id=${setlist.id})}" th:text="${setlist.title}"></a>
+        </li>
+    </ul>
+
+    <br>
+    <a href="/musicians">Back to Musicians</a>
+    <br><br>
+    <a href="/">Back to Home</a>
+
+    <br>
+    <a href="/listener-dashboard" th:if="${loggedInUser != null and loggedInUser.role == 'LISTENER'}">Back to Dashboard</a>
+    <a href="/musician-dashboard" th:if="${loggedInUser != null and loggedInUser.role == 'MUSICIAN'}">Back to Dashboard</a>
+    <br><br>
+    <a href="/musicians">Back to Musicians</a>
+    <br><br>
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Queoil</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <p style="color: red;" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+    <form action="/login" method="post">
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
