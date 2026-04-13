@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
+import java.util.List;
 
 @Controller
 public class PageController {
@@ -515,7 +516,13 @@ public class PageController {
             return "redirect:/musician-dashboard";
         }
 
-        model.addAttribute("favourites", favouriteRepository.findByListenerId(listener.getId()));
+        List<Favourite> favourites = favouriteRepository.findByListenerId(listener.getId());
+
+        List<User> musicians = favourites.stream()
+                .map(Favourite::getMusician)
+                .toList();
+
+        model.addAttribute("favourites", musicians);
         return "favourites";
     }
 

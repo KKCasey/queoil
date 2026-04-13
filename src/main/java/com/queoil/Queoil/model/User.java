@@ -21,10 +21,19 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "active_setlist_id")
     private Setlist activeSetlist;
-    
+
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Setlist> setlists;
+
+    @ManyToMany
+    @JoinTable(
+        name = "favourites",
+        joinColumns = @JoinColumn(name = "listener_id"),
+        inverseJoinColumns = @JoinColumn(name = "musician_id")
+    )
+
+private List<User> favouriteMusicians;
 
     public User() {
     }
@@ -98,5 +107,13 @@ public class User {
 
     public void setActiveSetlist(Setlist activeSetlist) {
         this.activeSetlist = activeSetlist;
+    }
+
+    public List<User> getFavouriteMusicians() {
+        return favouriteMusicians;
+    }
+
+    public void setFavouriteMusicians(List<User> favouriteMusicians) {
+        this.favouriteMusicians = favouriteMusicians;
     }
 }
